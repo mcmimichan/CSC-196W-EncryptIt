@@ -34,14 +34,15 @@
     let txt = document.getElementById("input-text").value;
 
     let cipheredText = cipherify(txt);    
-    let sizedText = setSize(cipheredText);
-    let finalText = setCaps(sizedText);
+    setSize();
+    let finalText = setCaps(cipheredText);
 
     document.getElementById("result").innerHTML = finalText;
   }
 
   function handleReset() {
     console.log("Resetting...");
+    //     
   }
 
   function cipherify(text){
@@ -74,15 +75,28 @@
   }
 
   function randomCipher(text) {
-    return "oops";
+    
+    
+    return "oops" + text;
   }
 
-  function setSize(text) {
-    return "double oops";
+  function setSize() {
+    const rbs = document.querySelectorAll('input[name="text-size"]');
+    for (let rb of rbs) {
+      if (rb.checked) {
+        let selected = rb.value;
+
+        if (selected == "12pt") {
+          document.getElementById("result").style.fontSize = "12pt";
+        } else if (selected == "24pt") {
+          document.getElementById("result").style.fontSize = "24pt";
+        }
+      }
+    }    
   }
 
   function setCaps(text) {
-    return "triple oops";
+    return "triple oops" + text;
   }
   
 
