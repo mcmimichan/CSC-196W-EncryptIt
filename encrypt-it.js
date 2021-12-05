@@ -31,11 +31,11 @@
   // you shouldn't write an entire Java program in the main method).
   function handleClick() {
     console.log("Button clicked!");
+    
     let txt = document.getElementById("input-text").value;
-
-    let cipheredText = cipherify(txt);    
-    setSize();
+    let cipheredText = cipherify(txt);
     let finalText = setCaps(cipheredText);
+    setSize();
 
     document.getElementById("result").innerHTML = finalText;
   }
@@ -46,15 +46,15 @@
   }
 
   function cipherify(text){
-    var cipherSelector = document.getElementById("cipher-type");
-    var cipherType = cipherSelector.value;
+    var cipherType = document.getElementById("cipher-type").value;
+    let result = "";
 
     if (cipherType == "shift")
-      shiftCipher(text);
+      result = shiftCipher(text);
     else if (cipherType == "random")
-      randomCipher(text);
+      result = randomCipher(text);
     
-    return text;
+    return result;
   }
 
   function shiftCipher(text) {
@@ -77,7 +77,7 @@
   function randomCipher(text) {
     
     
-    return "oops" + text;
+    return "this is supposed to be random: " + text;
   }
 
   function setSize() {
@@ -96,7 +96,12 @@
   }
 
   function setCaps(text) {
-    return "triple oops" + text;
+    var capsBox = document.getElementById("all-caps").value;
+
+    if (capsBox.checked)
+      text = text.toUpperCase();
+    
+    return text;
   }
   
 
