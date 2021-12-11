@@ -60,7 +60,7 @@
     if (cipherType == "shift")
       result = shiftCipher(text);
     else if (cipherType == "random")
-      result = randomCipher(text);
+      result = "View source for pseudocode randomizing \'" + randomCipher(text) + "\'";
     
     return result;
   }
@@ -82,8 +82,7 @@
   }
 
   function randomCipher(text) {
-    let result = "This is supposed to be random: " + text +
-                 "\n\n Please see source for pseudocode!";
+    let result = text;
 
     /*** RANDOM CIPHER PSEUDOCODE ***
      * 
