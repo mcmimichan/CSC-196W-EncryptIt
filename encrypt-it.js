@@ -98,7 +98,7 @@
   function setCaps(text) {
     var capsBox = document.getElementById("all-caps").value;
 
-    if (capsBox.checked)
+    if (capsBox.checked == true)
       text = text.toUpperCase();
     
     return text;
