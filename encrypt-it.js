@@ -42,13 +42,21 @@
 
   function handleReset() {
     console.log("Resetting...");
-    //     
+
+    /*** TO DO: ***/
+    // clear input and result fields
+    // deselect checkbox
+    // reselect 12pt radio button
+    // reset cipher type to Shift
+
   }
 
   function cipherify(text){
+    text = text.toLowerCase();
+
     var cipherType = document.getElementById("cipher-type").value;
     let result = "";
-
+    
     if (cipherType == "shift")
       result = shiftCipher(text);
     else if (cipherType == "random")
@@ -58,7 +66,6 @@
   }
 
   function shiftCipher(text) {
-    text = text.toLowerCase();
     let result = "";
     for (let i = 0; i < text.length; i++) {
       if (text[i] < 'a' || text[i] > 'z') {
@@ -75,9 +82,30 @@
   }
 
   function randomCipher(text) {
-    
-    
-    return "this is supposed to be random: " + text;
+    let result = "This is supposed to be random: " + text +
+                 "\n\n Please see source for pseudocode!";
+
+    /*** RANDOM CIPHER PSEUDOCODE ***
+     * 
+     * let alphabet = "abcdefghijklmnopqrstuvwxyz";
+     * let scrambledAlphabet = scramble(alphabet);
+     * let result = "";
+     * let resultChar = "";
+     * 
+     * for (let i = 0; i < text.length; i++) {
+     *   let originalChar = text.charAt(i);
+     * 
+     *   if (alphabet.includes(originalChar))
+     *     resultChar = scrambledAlphabet.charAt(i);
+     *   else
+     *     resultChar = originalChar;
+     * 
+     *   result += resultChar;
+     * }
+     * 
+     */
+
+    return result;
   }
 
   function setSize() {
@@ -96,46 +124,12 @@
   }
 
   function setCaps(text) {
-    var capsBox = document.getElementById("all-caps").value;
+    var capsBox = document.getElementById("all-caps");
 
-    if (capsBox.checked == true)
+    if (capsBox.checked)
       text = text.toUpperCase();
     
     return text;
   }
-  
-
-  /******* from Fancify *******
-
-  // Bigger! button: increase font size to 24pt
-  const btn = document.querySelector('button[name="bigger"]');
-
-  function upSize(event) {
-      document.getElementById("txt").style.fontSize= "4em";
-  }
-
-  btn.addEventListener('click', upSize);
-
-  // radio buttons: add/remove styles
-  function fancyOrNot(event) {
-    const rbs = document.querySelectorAll('input[name="js-style"]');
-    for (let rb of rbs) {
-        if (rb.checked) {
-            let selected = rb.value;
-                        
-            if (selected == "fancy") {
-                document.getElementById("txt").style.fontWeight="bold";
-                document.getElementById("txt").style.color="blue";
-                document.getElementById("txt").style.textDecoration="underline";
-            } else if (selected == "boring") {
-                document.getElementById("txt").style.fontWeight="normal";
-                document.getElementById("txt").style.color="black";
-                document.getElementById("txt").style.textDecoration="initial";
-            }
-        }
-    }
-  }
-
-  rb.addEventListener('change', fancyOrNot); */
 
 })();
